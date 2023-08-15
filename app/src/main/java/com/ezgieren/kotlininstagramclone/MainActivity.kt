@@ -12,7 +12,7 @@ import com.google.firebase.ktx.Firebase
 
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var auth : FirebaseAuth
+    private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,25 +21,53 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = Firebase.auth
+
+        val currentUser = auth.currentUser
+
+        if (currentUser != null) {
+            goToFeedActivityIntent()
+        }
     }
+
+    private fun goToFeedActivityIntent() {
+        val intent = Intent(this@MainActivity, FeedActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+    fun showToast(message: String) {
+        Toast.makeText(this@MainActivity, message, Toast.LENGTH_LONG).show()
+    }
+
+    private fun authenticateAndNavigate(
+        view: View?,
+        authAction: (email: String, password: String) -> Unit,
+    ) {
+        val email = binding.idETEmailAddress.text.toString()
+        val password = binding.idETPassword.text.toString()
+
+        if (email.isNotEmpty() && password.isNotEmpty()) {
+            authAction(email, password)
+        } else {
+            showToast("Enter email and password!!")        }
+    }
+
     fun signInClicked(view: View?) {
+        authenticateAndNavigate(view) { email, password ->
+            auth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
+                goToFeedActivityIntent()
+            }.addOnFailureListener {
+                it.localizedMessage?.let { exception -> showToast(exception) }
+            }
+        }
     }
 
     fun signUpClicked(view: View?) {
-       val email = binding.idETEmailAddress.text.toString()
-       val password = binding.idETPassword.text.toString()
-        if (email.isNotEmpty() && password.isNotEmpty()){
+        authenticateAndNavigate(view) { email, password ->
             auth.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
-                // Success
-                val intent = Intent(this@MainActivity, FeedActivity::class.java)
-                startActivity(intent)
-                finish()
+                goToFeedActivityIntent()
             }.addOnFailureListener {
-                // Failure
-                Toast.makeText(this@MainActivity,it.localizedMessage, Toast.LENGTH_LONG).show()
+                it.localizedMessage?.let { exception -> showToast(exception) }
             }
-        }else{
-            Toast.makeText(this,"Enter email and password!!", Toast.LENGTH_LONG).show()
         }
     }
 }
