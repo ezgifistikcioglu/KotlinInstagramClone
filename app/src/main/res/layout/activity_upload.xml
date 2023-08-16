@@ -8,12 +8,12 @@
 
     <ImageView
         android:id="@+id/idImageView"
-        android:layout_width="252dp"
-        android:layout_height="172dp"
+        android:layout_width="0dp"
+        android:layout_height="199dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
-        android:onClick="selectImage"
+        android:onClick="selectImageClicked"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,12 +21,13 @@
 
     <EditText
         android:id="@+id/idETCommentText"
-        android:layout_width="253dp"
-        android:layout_height="46dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="Enter Comment"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idImageView" />
@@ -36,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:onClick="upload"
+        android:onClick="uploadClicked"
         android:text="Upload"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
