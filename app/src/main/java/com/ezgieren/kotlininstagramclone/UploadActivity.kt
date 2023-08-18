@@ -15,11 +15,23 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.ezgieren.kotlininstagramclone.databinding.ActivityUploadBinding
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
+import com.google.firebase.Timestamp
+import java.util.*
 
 class UploadActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUploadBinding
     private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var permissionLauncher: ActivityResultLauncher<String>
+    private lateinit var auth : FirebaseAuth
+    private lateinit var fireStore: FirebaseFirestore
+    private lateinit var storage: FirebaseStorage
     var selectedPicture: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +40,8 @@ class UploadActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         registerLauncher()
+        auth = Firebase.auth
+        fireStore = Firebase.firestore
     }
 
     private fun checkAndRequestPermission() {
@@ -60,6 +74,37 @@ class UploadActivity : AppCompatActivity() {
 
     fun uploadClicked(view: View) {
         checkAndRequestPermission()
+
+        val  uuid = UUID.randomUUID()
+        val imageName = "$uuid.jpg"
+
+        storage = Firebase.storage
+        val reference = storage.reference
+        val imageReference = reference.child("images").child(imageName)
+        if (selectedPicture != null){
+            imageReference.putFile(selectedPicture!!).addOnSuccessListener{
+                //download url -> firestore
+                val uploadPictureReference = storage.reference.child("images").child(imageName)
+                uploadPictureReference.downloadUrl.addOnSuccessListener { uri ->
+                    val downloadUrl = uri.toString()
+
+                    val postMap = hashMapOf<String, Any>()
+                    postMap["downloadUrl"] = downloadUrl
+                    postMap["userEmail"] = auth.currentUser!!.email!!
+                    postMap["comment"] = binding.idETCommentText.text.toString()
+                    postMap["date"] = Timestamp.now()
+
+                    fireStore.collection("Posts").add(postMap).addOnSuccessListener {
+                        finish()
+                    }
+
+                }.addOnFailureListener { exception ->
+                    handleFailure(exception)
+                }
+            }.addOnFailureListener { exception ->
+                handleFailure(exception)
+            }
+        }
     }
 
     fun selectImageClicked(view: View) {
@@ -87,6 +132,11 @@ class UploadActivity : AppCompatActivity() {
                 // Permission denied
                 showToast("Permission needed!")
             }
+        }
+    }
+    private fun handleFailure(exception: Exception) {
+        exception.localizedMessage?.let { errorMessage ->
+            showToast(errorMessage)
         }
     }
 
