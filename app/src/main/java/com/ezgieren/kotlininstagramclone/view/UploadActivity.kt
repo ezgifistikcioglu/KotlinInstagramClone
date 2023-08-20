@@ -1,4 +1,4 @@
-package com.ezgieren.kotlininstagramclone
+package com.ezgieren.kotlininstagramclone.view
 
 import android.Manifest
 import android.content.Intent
@@ -12,6 +12,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.ezgieren.kotlininstagramclone.CustomFunc
 import com.ezgieren.kotlininstagramclone.databinding.ActivityUploadBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.Timestamp

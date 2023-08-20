@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">KotlinInstagramClone</string>
+    <string name="emailAddress">Email Address</string>
+    <string name="comment">Comment</string>
+    <string name="post">Post Image</string>
+    <string name="validEmailOrPw">Enter email and password!!</string>
 </resources>

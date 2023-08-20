@@ -1,11 +1,14 @@
-package com.ezgieren.kotlininstagramclone
+package com.ezgieren.kotlininstagramclone.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.ezgieren.kotlininstagramclone.CustomFunc
+import com.ezgieren.kotlininstagramclone.R
+import com.ezgieren.kotlininstagramclone.adapter.FeedRecyclerAdapter
 import com.ezgieren.kotlininstagramclone.databinding.ActivityFeedBinding
 import com.ezgieren.kotlininstagramclone.model.Post
 import com.google.firebase.auth.FirebaseAuth
@@ -22,7 +25,9 @@ class FeedActivity : AppCompatActivity() {
 
     private lateinit var customFunc: CustomFunc
 
-    private lateinit var postArrayList : ArrayList<Post>
+    private lateinit var postArrayList: ArrayList<Post>
+
+    private lateinit var feedAdapter: FeedRecyclerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,30 +39,35 @@ class FeedActivity : AppCompatActivity() {
         auth = Firebase.auth
         database = Firebase.firestore
 
-        postArrayList = ArrayList<Post>()
+        postArrayList = ArrayList()
 
         getData()
+
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        feedAdapter = FeedRecyclerAdapter(postArrayList)
+        binding.recyclerView.adapter = feedAdapter
     }
 
-    private fun getData(){
+    private fun getData() {
         database.collection("Posts").addSnapshotListener { value, error ->
-            if (error != null){
+            if (error != null) {
                 error.localizedMessage?.let { customFunc.showToast(it) }
-            }else{
-                if (value != null){
-                    if (!value.isEmpty){
+            } else {
+                if (value != null) {
+                    if (!value.isEmpty) {
                         val myDocuments = value.documents
 
-                        for (document in myDocuments){
+                        for (document in myDocuments) {
                             val comment = document.get("comment") as String
                             val userEmail = document.get("userEmail") as String
                             val downloadUrl = document.get("downloadUrl") as String
 
                             println(comment)
 
-                            val post = Post(userEmail,comment,downloadUrl)
+                            val post = Post(userEmail, comment, downloadUrl)
                             postArrayList.add(post)
                         }
+                        feedAdapter.notifyDataSetChanged()
                     }
                 }
             }

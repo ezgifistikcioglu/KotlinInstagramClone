@@ -1,24 +1,28 @@
-package com.ezgieren.kotlininstagramclone
+package com.ezgieren.kotlininstagramclone.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
+import com.ezgieren.kotlininstagramclone.CustomFunc
+import com.ezgieren.kotlininstagramclone.R
 import com.ezgieren.kotlininstagramclone.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-
 class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityMainBinding
+
+    private lateinit var customFunc: CustomFunc
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        customFunc = CustomFunc(this@MainActivity)
 
         auth = Firebase.auth
 
@@ -34,21 +38,19 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-    fun showToast(message: String) {
-        Toast.makeText(this@MainActivity, message, Toast.LENGTH_LONG).show()
-    }
 
     private fun authenticateAndNavigate(
         view: View?,
         authAction: (email: String, password: String) -> Unit,
     ) {
-        val email = binding.idETEmailAddress.text.toString()
+        val email = binding.idETEmailAddressText.text.toString()
         val password = binding.idETPassword.text.toString()
 
         if (email.isNotEmpty() && password.isNotEmpty()) {
             authAction(email, password)
         } else {
-            showToast("Enter email and password!!")        }
+            customFunc.showToast(getString(R.string.validEmailOrPw))
+        }
     }
 
     fun signInClicked(view: View?) {
@@ -56,7 +58,7 @@ class MainActivity : AppCompatActivity() {
             auth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
                 goToFeedActivityIntent()
             }.addOnFailureListener {
-                it.localizedMessage?.let { exception -> showToast(exception) }
+                it.localizedMessage?.let { exception -> customFunc.showToast(exception) }
             }
         }
     }
@@ -66,7 +68,7 @@ class MainActivity : AppCompatActivity() {
             auth.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
                 goToFeedActivityIntent()
             }.addOnFailureListener {
-                it.localizedMessage?.let { exception -> showToast(exception) }
+                it.localizedMessage?.let { exception -> customFunc.showToast(exception) }
             }
         }
     }
