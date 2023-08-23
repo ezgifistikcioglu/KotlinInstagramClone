@@ -59,6 +59,7 @@
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/db53bffb4d5e3e6a1680e67f00b8bf45/transformed/core-ktx-1.10.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/208101345ed1d2ea4223c16df185389f/transformed/constraintlayout-2.1.4-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/5b5cded2f9ee9a776bd16f98be3c2862/transformed/recyclerview-1.3.1-api.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/0b60596ac57fdc48b3d1781ff8145b26/transformed/picasso-2.8-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/42f0540f1f34681b85b17c7619d965d3/transformed/core-1.5.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/049d2bfd39bf4e734012718fb4d1aa26/transformed/storage-1.4.2-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/d1c09f8d8f5f773831b4a76a9bf411cb/transformed/monitor-1.6.1-api.jar</arg>
@@ -83,6 +84,7 @@
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/fabe3606992cc2af58a134e432cb4962/transformed/asynclayoutinflater-1.0.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/e1ffa6a5c0466faf61dd6629eb3e4d7b/transformed/core-1.10.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/8035a02c94b6cf025a5dcce8f186f20f/transformed/cardview-1.0.0-api.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/transforms-3/47ff42707c70577776dcf834d405d321/transformed/exifinterface-1.0.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/aa292ceb4f9de5178e723649073cd01a/transformed/firebase-components-17.0.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/7947d24ac4079576e09ed6c5bf82c558/transformed/lifecycle-runtime-2.5.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/c1a6515de006687f778bbe866e4c8c44/transformed/lifecycle-livedata-2.0.0-api.jar</arg>
@@ -120,12 +122,13 @@
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/b7cf96d524543e1f1a998a616554cca1/transformed/espresso-idling-resource-3.5.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup/javawriter/2.1.1/67ff45d9ae02e583d0f9b3432a5ebbe05c30c966/javawriter-2.1.1.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.10.0/7ef0f1d95bf4c0b3ba30bbae25e0e562b05cf75e/okhttp-3.10.0.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.7.5/7a15a7db50f86c4b64aa3367424a60e3a325b8f1/okhttp-2.7.5.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.14.0/102d7be47241d781ef95f1581d414b0943053130/okio-1.14.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.firebase/firebase-annotations/16.0.0/dbeae20d6c97b747b59ef47b6dcf770ba1a60fa6/firebase-annotations-16.0.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/6d474cee4ee5ca8d8cba36423dbfdbad/transformed/protolite-well-known-types-18.0.0-api.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.7.5/7a15a7db50f86c4b64aa3367424a60e3a325b8f1/okhttp-2.7.5.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/8357e995a42285ef2438a1f7e2974ba1/transformed/grpc-android-1.28.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.protobuf/protobuf-javalite/3.14.0/1f3dcd6a80126749748b85e822c09428468423b3/protobuf-javalite-3.14.0.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.13.0/a9283170b7305c8d92d25aff02a6ab7e45d06cbe/okio-1.13.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.6/9180733b7df8542621dc12e21e87557e8c99b8cb/gson-2.8.6.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.android/annotations/4.1.1.4/a1678ba907bf92691d879fef34e1a187038f9259/annotations-4.1.1.4.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.3.4/dac170e4594de319655ffb62f41cbd6dbb5e601e/error_prone_annotations-2.3.4.jar</arg>
@@ -213,7 +216,7 @@
     <orderEntry type="library" scope="TEST" name="Gradle: com.google.firebase:firebase-annotations:16.0.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.google.protobuf:protobuf-javalite:3.14.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.squareup.okhttp:okhttp:2.7.5" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: com.squareup.okio:okio:1.13.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.squareup.okio:okio:1.14.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: io.grpc:grpc-okhttp:1.28.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: io.grpc:grpc-core:1.28.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: io.grpc:grpc-api:1.28.0" level="project" />
@@ -229,6 +232,7 @@
     <orderEntry type="library" scope="TEST" name="Gradle: io.perfmark:perfmark-api:0.19.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: io.grpc:grpc-protobuf-lite:1.28.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: io.grpc:grpc-stub:1.28.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.squareup.okhttp3:okhttp:3.10.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: androidx.test:runner:1.5.2@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: androidx.test:annotation:1.0.1@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: androidx.annotation:annotation-experimental:1.3.0@aar" level="project" />
@@ -310,6 +314,8 @@
     <orderEntry type="library" scope="TEST" name="Gradle: com.google.firebase:firebase-storage-ktx:20.0.0@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.google.firebase:firebase-storage:20.0.0@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.google.firebase:firebase-appcheck-interop:16.0.0-beta01@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.squareup.picasso:picasso:2.8@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.exifinterface:exifinterface:1.0.0@aar" level="project" />
   </component>
   <component name="TestModuleProperties" production-module="KotlinInstagramClone.app.main" />
 </module>

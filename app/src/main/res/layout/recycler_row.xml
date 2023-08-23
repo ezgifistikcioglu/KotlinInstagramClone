@@ -3,47 +3,113 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/profileImageView"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/sample_user_profile"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/postImageView"
+        android:layout_marginEnd="8dp"/>
 
     <TextView
         android:id="@+id/idETEmailAddressText"
         style="@style/Widget.AppCompat.TextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/emailAddress"
         android:textColor="#9575CD"
         android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/postImageView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/idETCommentText"
-        style="@style/Widget.AppCompat.TextView"
-        android:layout_width="395dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/comment"
-        android:textColor="@color/material_dynamic_tertiary50"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idRVImageView" />
+        app:layout_constraintStart_toEndOf="@+id/profileImageView"
+        app:layout_constraintTop_toTopOf="@+id/profileImageView" />
 
     <ImageView
-        android:id="@+id/idRVImageView"
+        android:id="@+id/postImageView"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:src="@drawable/sample_post_image"
+        app:layout_constraintTop_toBottomOf="@+id/profileImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp" />
+
+    <ImageView
+        android:id="@+id/likeImageView"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_heart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/postImageView"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp" />
+
+    <TextView
+        android:id="@+id/likeCountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="1234"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/likeImageView"
+        app:layout_constraintTop_toBottomOf="@+id/postImageView"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="4dp" />
+
+    <ImageView
+        android:id="@+id/commentImageView"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_comment"
+        app:layout_constraintStart_toEndOf="@+id/likeCountTextView"
+        app:layout_constraintTop_toBottomOf="@+id/postImageView"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp" />
+
+    <TextView
+        android:id="@+id/commentCountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="567"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/commentImageView"
+        app:layout_constraintTop_toBottomOf="@+id/postImageView"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="4dp" />
+
+    <TextView
+        android:id="@+id/captionTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="This is a sample caption for the post."
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/likeImageView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idETEmailAddressText"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/timeTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="2 hours ago"
+        android:textSize="12sp"
+        android:textColor="#808080"
+        app:layout_constraintTop_toBottomOf="@+id/captionTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

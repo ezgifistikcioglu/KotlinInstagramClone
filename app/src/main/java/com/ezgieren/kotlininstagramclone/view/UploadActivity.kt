@@ -80,7 +80,7 @@ class UploadActivity : AppCompatActivity() {
     }
 
     fun uploadClicked(view: View) {
-        checkAndRequestPermission()
+       // checkAndRequestPermission()
 
         val uuid = UUID.randomUUID()
         val imageName = "$uuid.jpg"
@@ -101,15 +101,17 @@ class UploadActivity : AppCompatActivity() {
                     postMap["comment"] = binding.idETCommentText.text.toString()
                     postMap["date"] = Timestamp.now()
 
-                    fireStore.collection("Posts").add(postMap).addOnSuccessListener {
-                        finish()
+                    fireStore.collection("Posts").add(postMap).addOnCompleteListener { task ->
+                        if (task.isComplete && task.isSuccessful) {
+                            //back
+                            finish()
+                        }
+                    }.addOnFailureListener { exception ->
+                        customFunc.handleFailure(exception)
                     }
-
                 }.addOnFailureListener { exception ->
                     customFunc.handleFailure(exception)
                 }
-            }.addOnFailureListener { exception ->
-                customFunc.handleFailure(exception)
             }
         }
     }
